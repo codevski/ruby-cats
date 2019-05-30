@@ -25,5 +25,9 @@
   </a>
 </div>
 
+## Instructions
+<p>Download file and unzip</p>
+<p>Simply just run the file <code>ruby main.rb</code></p>
+
 ## License
 [MIT](https://github.com/codevski/ruby-cats/blob/master/LICENSE.md)
