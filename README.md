@@ -25,9 +25,11 @@
   </a>
 </div>
 
-## Instructions
-<p>Download file and unzip</p>
-<p>Simply just run the file <code>ruby main.rb</code></p>
+## Install
+Before you begin; install the dependencies by running `bundle`.
+Once the dependencies have been installed you'll be able to run the application:
+
+- `bundle exec rake`  : Will attempt to run your application and print output to the terminal.
 
 ## License
 [MIT](https://github.com/codevski/ruby-cats/blob/master/LICENSE.md)
