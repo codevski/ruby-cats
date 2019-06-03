@@ -5,7 +5,7 @@ class RubyCats
   def self.call(people)
     # Parse all files
     people    = JSON.parse(people)
-    
+
     male      = []
     female    = []
     pets      = []
@@ -18,6 +18,7 @@ class RubyCats
       end
     end
 
+    # Sort and save to current arrays
     male.sort!
     female.sort!
 

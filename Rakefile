@@ -1,3 +1,4 @@
+require 'rest-client'
 require 'json'
 
 task :default => [:run]
@@ -9,24 +10,24 @@ task "run" do
   require 'ruby_cats'
   
   # load the data files into strings for you
-  people_json = File.read("data/people.json")
-  
-  # call the app, passing the data as strings containing JSON
-  result_json = RubyCats.call(people_json)
-  result_json.to_json
+  url = 'http://agl-developer-test.azurewebsites.net/people.json'
 
-  # # # pretty print the output
+  # If URL has issues use local file for this code to work
+  begin
+    response = RestClient.get(url)
+   rescue RestClient::ExceptionWithResponse => err
+    response = File.read("data/people.json")
+   end
+
+  # call the app, passing the data as strings containing JSON
+  result_json = RubyCats.call(response)
+
+  # # # pretty printing the output
   puts "Alphabetical order CATS under owner gender:"
-  puts sprintf("-") * 20
-  puts sprintf("%-10s", "Male")
-  puts sprintf("-") * 20
-  result_json[:male].each do |pet|
-    puts sprintf("%-10s", pet)
-  end
-  puts sprintf("-") * 20
-  puts sprintf("%-10s","Female")
-  puts sprintf("-") * 20
-  result_json[:female].each do |pet|
-    puts sprintf("%-10s", pet)
+  puts sprintf("-") * 40
+  puts sprintf("%-20s%-20s", "Male", "Female")
+  puts sprintf("-") * 40
+  result_json[:male].zip(result_json[:female]).each do |male, female| 
+    puts "%-20s %-20s" % [male, female]
   end
 end

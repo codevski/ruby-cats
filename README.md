@@ -19,14 +19,16 @@
 
 <div align="center">
   <sub>The little project that could. Built with ❤︎ by
-  <a href="https://twitter.com/codevski">Codevski</a> and
-  <a href="#">
-    contributors
-  </a>
+  <a href="https://twitter.com/codevski">Codevski</a>
 </div>
 
+## Screenshot
+![screenshot](/data/image.png)
+
 ## Install
-Before you begin; install the dependencies by running `bundle`.
+Before you begin; install the dependencies by running: 
+- `bundle`  
+
 Once the dependencies have been installed you'll be able to run the application:
 
 - `bundle exec rake`  : Will attempt to run your application and print output to the terminal.
