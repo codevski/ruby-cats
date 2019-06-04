@@ -32,6 +32,7 @@ Before you begin; install the dependencies by running:
 Once the dependencies have been installed you'll be able to run the application:
 
 - `bundle exec rake`  : Will attempt to run your application and print output to the terminal.
+- No Testing Framework has been added. Happy to add rspec if required.
 
 ## License
 [MIT](https://github.com/codevski/ruby-cats/blob/master/LICENSE.md)
