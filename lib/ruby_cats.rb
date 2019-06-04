@@ -1,4 +1,9 @@
 require 'json'
+require 'gender'
+require 'cat'
+require 'helper'
+
+include Helper
 
 class RubyCats
 
@@ -10,19 +15,25 @@ class RubyCats
     female    = []
     pets      = []
 
+    # Create Owner Genders
+    male_owner = Gender.new("Male")
+    female_owner = Gender.new("Female")
+
+    # Find cats, create Cat object and append them to Gender Owner object
     people.each do |item|
       if item['gender'] == 'Male' && item['pets'] != nil
-        item['pets'].map { |pet| male << pet["name"] if pet["type"] == "Cat" }
+        item['pets'].map { |pet| male_owner.petname << Cat.new(pet["name"]) if pet["type"] == "Cat" }
       elsif item['gender'] == 'Female' && item['pets'] != nil
-        item['pets'].map { |pet| female << pet["name"] if pet["type"] == "Cat" }
+        item['pets'].map { |pet| female_owner.petname << Cat.new(pet["name"]) if pet["type"] == "Cat" }
       end
     end
 
-    # Sort and save to current arrays
-    male.sort!
-    female.sort!
+    # Sort the pets
+    male_owner.sort_pet
+    female_owner.sort_pet
 
-    pets = {"male": male, "female": female}
-  end
-    
+    # construct hash
+    pets = {"male": convert_to_string(male_owner.petname), "female": convert_to_string(female_owner.petname)}
+  
+  end  
 end

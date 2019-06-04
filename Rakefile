@@ -25,9 +25,13 @@ task "run" do
   # # # pretty printing the output
   puts "Alphabetical order CATS under owner gender:"
   puts sprintf("-") * 40
-  puts sprintf("%-20s%-20s", "Male", "Female")
+  puts sprintf("%-20s", "Male")
   puts sprintf("-") * 40
-  result_json[:male].zip(result_json[:female]).each do |male, female| 
-    puts "%-20s %-20s" % [male, female]
-  end
+  result_json[:male].each {|male| puts "%-20s" % [male.name]}
+
+  puts sprintf("-") * 40
+  puts sprintf("%-20s", "Female")
+  puts sprintf("-") * 40
+  result_json[:female].each {|female| puts "%-20s" % [female.name]}
+
 end
